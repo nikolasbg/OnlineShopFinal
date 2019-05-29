@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Moq;
 using OnlineShop.Domain.Abstract;
+using OnlineShop.Domain.Concrete;
 using OnlineShop.Domain.Entities;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(OnlineShop.WebUI.App_Start.NinjectWebCommon), "Start")]
@@ -67,14 +68,15 @@ namespace OnlineShop.WebUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns(new List<Product>
-            {
-                new Product {Name = "Football", Price = 23},
-                new Product {Name = "Surf board", Price = 179},
-                new Product {Name = "Running shoes", Price = 95}
-            });
-            kernel.Bind<IProductRepository>().ToConstant(mock.Object);
+            kernel.Bind<IProductRepository>().To<EFProductRepository>();
+            //Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            //mock.Setup(m => m.Products).Returns(new List<Product>
+            //{
+            //    new Product {Name = "Football", Price = 23},
+            //    new Product {Name = "Surf board", Price = 179},
+            //    new Product {Name = "Running shoes", Price = 95}
+            //});
+            //kernel.Bind<IProductRepository>().ToConstant(mock.Object);
 
         }
     }
