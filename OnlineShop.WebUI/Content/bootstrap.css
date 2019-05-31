@@ -249,6 +249,8 @@ table {
   }
   img {
     max-width: 100% !important;
+      width: 100%;
+      height: 300px;
   }
   @page  {
     margin: 2cm .5cm;
