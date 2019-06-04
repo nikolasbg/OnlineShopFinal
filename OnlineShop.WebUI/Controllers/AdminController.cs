@@ -8,6 +8,7 @@ using OnlineShop.Domain.Entities;
 
 namespace OnlineShop.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IProductRepository repository;
@@ -58,7 +59,7 @@ namespace OnlineShop.WebUI.Controllers
             }
             else
             {
-                // there is something wrong with the data values
+                // Nesto nije u redu sa unetim vrednostima
                 return View(product);
             }
         }
