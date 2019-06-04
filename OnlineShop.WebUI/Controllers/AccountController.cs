@@ -49,7 +49,13 @@ namespace OnlineShop.WebUI.Controllers
                 return View();
 
             }
+
             
+        }
+        public ActionResult Logout()  //LogOut dugme koje se nalazi na svim admin stranama i koje sluzi za odjavu
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Admin");
         }
     }
 }
